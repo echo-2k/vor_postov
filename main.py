@@ -4,17 +4,17 @@ import asyncio
 
 api_id = 1234567890 # Получить https://my.telegram.org/auth
 api_hash = '0123456789abcdef0123456789abcdef'
-source_channels = [-1234567890, -1234567890] # Доноры
+source_channels = [-1234567890, -1234567890] # откуда берём посты
 destination_channels = {
     -1234567890: "<b><a href='https://t.me/savage1262'>🔪 Savage1262</a></b>",
     -1234567890: "<b><a href='https://t.me/savage1262'>🔪 Savage1262</a></b>"
-} # ID основного канала: Описание (можно использовать HTML-разметку)(можно использовать несколько каналов)
+} # ID основного канала: Описание(можно использовать несколько каналов)
 
-bot_token = '1234567890:0123456789abcdef0123456789abcdef'  # Токен бота с логами
-log_chat_id = 1564050901  # ID чата, куда будут отправляться логи
-stop_words = ['https', 'казино', 'ставки', 'пока не удалили', 'игра', 'крипта', '@', '.', 'послед', '-']  # Замените на ваши стоп-слова
+bot_token = '122'  # Токен бота
+log_chat_id =   # ID чата, куда будут отправляться посты
+stop_words = ['https', 'казино', 'ставки', 'пока не удалили', 'игра', 'крипта', '@', '.', 'послед', '-']  # Заменить на другие исключения
 
-client = TelegramClient('post_grabber_savage1262', api_id, api_hash)
+client = TelegramClient('vor_postov', api_id, api_hash)
 
 bot = Bot(token=bot_token, parse_mode='HTML')
 dp = Dispatcher(bot)
@@ -40,9 +40,9 @@ async def new_album(event):
     
     original_message = event.original_update.message.message
 
-    # Проверяем наличие стоп-слов в сообщении
+    # Проверяем наличие запрещенных слов в сообщении
     if any(stop_word in original_message for stop_word in stop_words):
-        log_message = f"<i><b>♻️ Сообщение содержит стоп-слово.\n\n</b></i><code>{original_message}</code>"
+        log_message = f"<i><b>♻️ Сообщение содержит запрещённые слова.\n\n</b></i><code>{original_message}</code>"
         
         await bot.send_message(log_chat_id, log_message)
         return
@@ -61,9 +61,9 @@ async def handler(event):
 
     original_message = event.message.message
 
-    # Проверяем наличие стоп-слов в сообщении
+    # Проверяем наличие запрещенных слов в сообщении
     if any(stop_word in original_message for stop_word in stop_words):
-        log_message = f"<i><b>♻️ Сообщение содержит стоп-слово.\n\n</b></i><code>{original_message}</code>"
+        log_message = f"<i><b>♻️ Сообщение содержит запреты.\n\n</b></i><code>{original_message}</code>"
         
         await bot.send_message(log_chat_id, log_message)
         return
