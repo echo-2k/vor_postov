@@ -3,15 +3,15 @@ from aiogram import Bot, Dispatcher, types, executor
 import asyncio
 import re
 
-api_id = 11066459  # Получить https://my.telegram.org/auth
-api_hash = '03a2863d458f425995b86fcbd9f910a1'
+api_id =   # Получить https://my.telegram.org/auth
+api_hash = ''
 source_channels = [-1234567890, -1234567890]  # откуда берём посты
 destination_channels = {
     -1234567890: "<b><a href='https://t.me/'></a></b>",
     -1234567890: "<b><a href='https://t.me/'></a></b>"
 }  # ID основного канала: Описание(можно использовать несколько каналов)
 
-bot_token = '7025449311:AAFd6ccTTS8xqz4KtlwuCTnbfkHXKU8vkT4'  # Токен бота для логов
+bot_token = ''  # Токен бота для логов
 log_chat_id = -1234567890  # ID чата, куда будут отправляться логи
 stop_words = ['https', 'казино', 'ставки', 'пока не удалили', 'игра', 'крипта', '@', '.', 'послед', '-']  # Заменить на другие исключения
 
